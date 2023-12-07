@@ -1,0 +1,142 @@
+(base) ian@ian-Latitude-E7440:~/Downloads/llvm$ conda create -n lf
+conda activate lf
+WARNING: A conda environment already exists at '/home/ian/anaconda3/envs/lf'
+Remove existing environment (y/[n])? y
+
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/ian/anaconda3/envs/lf
+
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate lf
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(lf) ian@ian-Latitude-E7440:~/Downloads/llvm$ conda activate lf
+(lf) ian@ian-Latitude-E7440:~/Downloads/llvm$ conda install lfortran -c conda-forge
+Channels:
+ - conda-forge
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/ian/anaconda3/envs/lf
+
+  added / updated specs:
+    - lfortran
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge 
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-2_gnu 
+  ca-certificates    conda-forge/linux-64::ca-certificates-2023.11.17-hbcca054_0 
+  lfortran           conda-forge/linux-64::lfortran-0.29.0-hfc55251_0 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-13.2.0-h807b86a_3 
+  libgomp            conda-forge/linux-64::libgomp-13.2.0-h807b86a_3 
+  libsodium          conda-forge/linux-64::libsodium-1.0.18-h36c2ea0_1 
+  libstdcxx-ng       conda-forge/linux-64::libstdcxx-ng-13.2.0-h7e041cc_3 
+  libuuid            conda-forge/linux-64::libuuid-2.38.1-h0b41bf4_0 
+  libzlib            conda-forge/linux-64::libzlib-1.2.13-hd590300_5 
+  openssl            conda-forge/linux-64::openssl-3.2.0-hd590300_1 
+  xeus               conda-forge/linux-64::xeus-3.0.5-hac2b420_1 
+  xeus-zmq           conda-forge/linux-64::xeus-zmq-1.0.3-h0541b36_0 
+  zeromq             conda-forge/linux-64::zeromq-4.3.5-h59595ed_0 
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(lf) ian@ian-Latitude-E7440:~/Downloads/llvm$ ls *.f
+ls: cannot access '*.f': No such file or directory
+(lf) ian@ian-Latitude-E7440:~/Downloads/llvm$ cd
+(lf) ian@ian-Latitude-E7440:~$ cd Downloads
+(lf) ian@ian-Latitude-E7440:~/Downloads$ ls *.f90
+fibonacci.f90  take_notes.f90  tds2.f90  todosub.f90  to_the_power.f90  totient.f90
+(lf) ian@ian-Latitude-E7440:~/Downloads$ lfortran fibonacci.f90
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+(lf) ian@ian-Latitude-E7440:~/Downloads$ cat fibonacci.f90
+program fibonacci
+    implicit none
+
+    integer :: i
+    integer :: numbers(10)
+
+    numbers(1) = 1
+    numbers(2) = 1
+    do i = 3, 10
+        numbers(i) = numbers(i-1) + numbers(i-2)
+    end do
+
+    do i = 1, 10
+        print *, numbers(i)
+    end do
+end program fibonacci
+(lf) ian@ian-Latitude-E7440:~/Downloads$ sloccount fibonacci.f90
+Have a non-directory at the top, so creating directory top_dir
+Adding /home/ian/Downloads/fibonacci.f90 to top_dir
+Categorizing files.
+Finding a working MD5 command....
+Found a working MD5 command.
+Computing results.
+
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+13      top_dir         f90=13
+
+
+Totals grouped by language (dominant language first):
+f90:             13 (100.00%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 13
+Development Effort Estimate, Person-Years (Person-Months) = 0.00 (0.03)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.05 (0.62)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 0.04
+Total Estimated Cost to Develop                           = $ 283
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."
+(lf) ian@ian-Latitude-E7440:~/Downloads$ 
